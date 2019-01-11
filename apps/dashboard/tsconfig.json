@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "jest"
+    ]
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "plugins": [
+    {
+      "name": "@angular/language-service"
+    }
+  ]
+}
