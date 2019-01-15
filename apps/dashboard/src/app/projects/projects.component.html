@@ -10,31 +10,9 @@
 			<!-- <pre>{{generatedHours | json}}</pre> -->
 			<mat-card-content id="teste">
 				<h2>{{formattedMonth}}</h2>
-				<!-- <table>
-					<tr>
-						<th *ngFor="let hour of generatedHours">{{hour.hour}}</th>
-					</tr>
-					<tr>
-						<td *ngFor="let hour of generatedHours">{{hour.hour}}</td>
-					</tr>
-
-
-				</table> -->
-				<hr>
-				<br>
-				<br>
-
+				<hr><br><br>
 				<table>
-					<!-- <tr>
-						<th *ngFor="let day of generatedMonth">{{day.weekDay}}</th>
-					</tr>
-					<tr>
-						<td *ngFor="let day of generatedMonth">{{day.day}}</td>
-					</tr>
-					<tr *ngFor="let hour of generatedHours">
-						<td>{{hour.hour}}</td>
-					</tr> -->
-					<tr>
+					<tr>s
 						<th *ngFor="let day of generatedMonth">{{day.weekDay}}</th>
 					</tr>
 					<tr>
@@ -45,29 +23,9 @@
 					</tr>
 
 				</table>
-				<!-- <table mat-table *ngFor="let day of generatedMonth">
-					<ng-container matColumnDef="day.weekDay">
-						<th mat-header-cell *matHeaderCellDef> {{day.weekDay}} </th>
-						<td mat-cell *matCellDef="let user"> {{day.weekDay}} </td>
-					</ng-container>
-					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-					<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-				</table> -->
-				<!-- <mat-list>
-          <mat-list-item (click)="selectProject(project)" *ngFor="let project of projects">
-            <h3 mat-line>
-              {{project.title}}
-            </h3>
-            <p mat-line>
-              {{project.details}}
-            </p>
-            <button mat-icon-button>
-              <mat-icon>close</mat-icon>''
-            </button>
-          </mat-list-item>
-        </mat-list> -->
 			</mat-card-content>
 		</mat-card>
+
 	</div>
 	<!-- PROJECT DETAILS -->
 	<!-- <div class="col-50">

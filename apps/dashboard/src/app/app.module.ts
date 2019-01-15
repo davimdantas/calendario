@@ -8,9 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { ProjectsModule } from './projects/projects.module';
 import { CustomersModule } from './customers/customers.module';
+import { SelectorComponent } from './selector/selector.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SelectorComponent],
   imports: [
     BrowserModule,
     NxModule.forRoot(),
@@ -19,7 +23,9 @@ import { CustomersModule } from './customers/customers.module';
     MaterialModule,
     HomeModule,
     ProjectsModule,
-    CustomersModule
+    CustomersModule,
+    CdkTableModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

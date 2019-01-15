@@ -1,0 +1,102 @@
+<p>
+  selector works!
+</p>
+
+<div>
+  Month
+  {{generatedMonth | json}}
+  <br>
+  <br>
+
+  <!-- <hr>
+  {{generatedHours| json}}
+  <hr>
+  <br>
+  <br>
+
+    Days
+    {{generatedDays| json}}
+    <br>
+    <br> -->
+  <p>
+
+    Collums
+    {{columns| json}}
+    <br>
+    <br>
+    novoarray
+    {{novoarray| json}}
+    <br>
+    <br>
+    teste
+    {{teste| json}}
+
+    <!-- {{generatedMonth[1]| json}} -->
+    <br>
+
+    <br>
+
+    <br>
+    <br>
+
+
+    <br>
+    <br>
+    Month Day
+    <!-- {{generatedMonth[0].monthDay | json}} -->
+
+
+  </p>
+  aaaaa
+  <!-- {{columns[0].schedule(generatedMonth[0])| json}} -->
+  <!-- {{novoarray[1].schedule3(teste[0])| json}}
+  {{novoarray[1].schedule3(teste[1])| json}}
+  {{novoarray[1].schedule3(teste[2])| json}}
+  {{novoarray[1].schedule3(teste[3])| json}}
+  {{novoarray[1].schedule3(teste[4])| json}}
+  {{novoarray[1].schedule3(teste[5])| json}}
+  {{novoarray[1].schedule3(teste[6])| json}}
+  {{novoarray[1].schedule3(teste[7])| json}}
+  {{novoarray[1].schedule3(teste[8])| json}}
+  {{novoarray[1].schedule3(teste[9])| json}}
+  {{novoarray[1].schedule3(teste[10])| json}}
+  {{novoarray[1].schedule3(teste[11])| json}}
+  {{novoarray[1].schedule3(teste[12])| json}} -->
+
+
+
+
+</div>
+
+
+
+<mat-table [dataSource]="dataSource">
+
+  <!-- <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef">
+    <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
+    <mat-cell *ngFor="let day of generatedMonth">{{day.monthDay}}</mat-cell>
+  </ng-container>
+
+
+  <ng-container *ngFor="let column of generatedMonth" [cdkColumnDef]="column.monthDay">
+    <mat-header-cell *cdkHeaderCellDef>{{ column.weekDay }}</mat-header-cell>
+    <mat-cell *matCellDef="let day">{{day.monthDay}}</mat-cell>
+  </ng-container> -->
+
+  <!-- <ng-container *ngFor="let column of generatedMonth" [cdkColumnDef]="column.monthDay">
+    <mat-header-cell *cdkHeaderCellDef>{{ column.weekDay }}</mat-header-cell>
+    <mat-cell *matCellDef="let day of teste"></mat-cell>
+  </ng-container> -->
+
+  <ng-container *ngFor="let column of novoarray" [cdkColumnDef]="column.columnDef">
+    <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
+    <mat-cell *matCellDef="let day">{{column.cell(day)}}</mat-cell>
+  </ng-container>
+
+
+
+
+
+  <mat-header-row *matHeaderRowDef="generatedDays"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: generatedDays;"></mat-row>
+</mat-table>
