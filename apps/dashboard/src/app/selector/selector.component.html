@@ -37,50 +37,64 @@
 
 
 <div class="col-12 col-xl-9 px-md-0 pr-xl-4">
-  <div class="component-demo">
+	<div class="component-demo">
 
 
-    <p>Selecione o periodo disponível para o evento</p>
+		<p>Selecione o periodo disponível para o evento</p>
 
-    <ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="1" [dayTemplate]="t"
-      [minDate]="firstDay" [maxDate]="lastDay">
-    </ngb-datepicker>
+		<ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="1" [dayTemplate]="t"
+		 [minDate]="firstDay" [maxDate]="lastDay">
+		</ngb-datepicker>
 
-    <ng-template #t let-date let-focused="focused">
-      <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)"
-        (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
-        {{ date.day }}
+		<ng-template #t let-date let-focused="focused">
+			<span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)"
+			 (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+				{{ date.day }}
 
-      </span>
-    </ng-template>
-    <form class="teste">
+			</span>
+		</ng-template>
+		<!-- <form class="teste"> -->
 
-      <mat-form-field style="width:100px">
-        <input matInput type="time" placeholder="Hora inicial" value="07:00" style="width:100px" name="horaI"
-          [(ngModel)]="mudancas.horaI">
-
-
-      </mat-form-field>
-      <mat-form-field style="width:100px">
-        <input matInput type="time" placeholder="Hora Final" value="18:00" style="width:100px" name="horaF" [(ngModel)]="mudancas.horaF">
-      </mat-form-field>
-      <!-- <mat-form-field style="width:100px">
-        <input matInput type="number" placeholder="Hora inicial" value="07" style="width:100px" name="horaI"
-          [(ngModel)]="mudancas.horaI">
+		<mat-form-field style="width:100px">
+			<input matInput type="time" placeholder="Hora inicial" value="07:00" style="width:100px" name="horaI" [(ngModel)]="mudancas.horaI">
 
 
-      </mat-form-field>
-      <mat-form-field style="width:100px">
-        <input matInput type="number" placeholder="Hora Final" value="18" style="width:100px" name="horaF" [(ngModel)]="mudancas.horaF">
-      </mat-form-field> -->
-      <!-- <input type="submit" value="Save"> -->
+		</mat-form-field>
+		<mat-form-field style="width:100px">
+			<input matInput type="time" placeholder="Hora Final" value="18:00" style="width:100px" name="horaF" [(ngModel)]="mudancas.horaF">
+		</mat-form-field>
 
-      <button mat-raised-button (click)="updateDates()">Enviar mudanças</button>
-    </form>
-    <!-- 
+		<mat-card>
+			<mat-card-content>
+				<h2 class="example-h2">Dias da semana</h2>
+
+				<section class="example-section">
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.domingo">Domingo</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.segunda">Segunda</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.terca">Terça</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.quarta">Quarta</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.quinta">Quinta</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.sexta">Sexta</mat-checkbox>
+					<mat-checkbox class="example-margin" checked [(ngModel)]="diasDasemana.sabado">Sabado</mat-checkbox>
+				</section>
+
+
+
+			</mat-card-content>
+		</mat-card>
+
+
+
+
+
+
+		<button mat-raised-button (click)="updateDates()">Enviar mudanças</button>
+		<!-- </form> -->
+		<!-- 
     <hr>
     <pre>{{ getCurrentModel() }}</pre>
     <pre>From: {{ fromDate | json }} </pre>
     <pre>To: {{ toDate | json }} </pre>
   </div> -->
-  </div>
+
+	</div>

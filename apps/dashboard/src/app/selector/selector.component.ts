@@ -1,12 +1,16 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarGeneratorComponent } from '../calendar-generator/calendar-generator.component'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 
 class changesForTable {
 	constructor(
 		public horaI: string,
 		public horaF: string,
+
+		public diasDaSemana: []
 
 	) { }
 }
@@ -33,7 +37,39 @@ export class SelectorComponent implements OnInit {
 
 	submitted: boolean = false;
 
-	mudancas = new changesForTable('', '');
+	mudancas = new changesForTable('', '', []);
+
+	checked = false;
+	indeterminate = false;
+	labelPosition = 'after';
+	disabled = false;
+
+	diasDasemana = {
+		domingo: true,
+
+		segunda: true,
+
+		terca: true,
+		quarta: true,
+		quinta: true,
+
+		sexta: true,
+		sabado: true
+
+	}
+
+	arrayDiasDasemana = []
+
+	gerarArrayDiasDasemana() {
+		this.arrayDiasDasemana = []
+		var contador = 0
+		for (var i in this.diasDasemana) {
+			if (this.diasDasemana[i] == true) {
+				this.arrayDiasDasemana.push(contador)
+			}
+			contador += 1
+		}
+	}
 
 	constructor(config: NgbDatepickerConfig, calendar: NgbCalendar) {
 		this.fromDate = calendar.getToday();
@@ -89,13 +125,15 @@ export class SelectorComponent implements OnInit {
 	@Output() clicked = new EventEmitter()
 
 	updateDates() {
-		this.dateArray.push(this.mudancas.horaI, this.mudancas.horaF)
+		this.gerarArrayDiasDasemana()
+		this.dateArray.push(this.mudancas.horaI, this.mudancas.horaF, this.arrayDiasDasemana)
 		this.clicked.emit(this.dateArray)
 	}
 
 
 
 	ngOnInit() {
+		this.gerarArrayDiasDasemana()
 	}
 
 

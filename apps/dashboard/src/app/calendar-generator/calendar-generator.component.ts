@@ -43,57 +43,45 @@ export class CalendarGeneratorComponent implements OnInit {
 	daysForTable = new BehaviorSubject(this.calendarArray)
 
 	dataSource: Observable<any[]>;
+	allowedDays = [0, 1, 2, 3, 4, 5, 6]
 
 
 	calendarGenerator(fHour, lHour, cDay, dOMonth) {
 		const newObj = {}
 		for (let k = cDay; k <= dOMonth; k++) {
-			Object.defineProperty(newObj, `ar${k}`, {
-				value: `${k}`,
-				writable: true,
-				configurable: true,
-				enumerable: true
-			})
-
-
-			const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 			const dayOfWeekGetter = (new Date(this.currentlyYear, this.currentlyMonth, k)).getDay()
-			const temporaryName = `ar${k}`
-			const temporaryObj = {
-				columnDef: temporaryName,
-				header: days[dayOfWeekGetter],
-				// cell: (column) => `${column[`ar${k}`]}`
-				cell: function (column) {
-					return `${column[temporaryName]}`
+			if (this.allowedDays.includes(dayOfWeekGetter)) {
+
+
+				Object.defineProperty(newObj, `ar${k}`, {
+					value: `${k}`,
+					writable: true,
+					configurable: true,
+					enumerable: true
+				})
+
+
+				const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+				const temporaryName = `ar${k}`
+				const temporaryObj = {
+					columnDef: temporaryName,
+					header: days[dayOfWeekGetter],
+					cell: function (column) {
+						return `${column[temporaryName]}`
+					}
 				}
+				this.columnArray.push(temporaryObj)
 			}
-			this.columnArray.push(temporaryObj)
 		}
 		this.calendarArray.push(newObj)
 
-		// for (let i = fHour; i <= lHour; i++) {
-		// 	const j = String(i)
-		// 	const newObj2 = {}
-		// 	// this.generatedHours.push(`${i < 10 ? 0 + j : j}:00`)
-		// 	for (let h = cDay; h <= dOMonth; h++) {
-		// 		Object.defineProperty(newObj2, `ar${h}`, {
-		// 			value: `${i < 10 ? 0 + j : j}:00`,
-		// 			writable: true,
-		// 			configurable: true,
-		// 			enumerable: true
-		// 		}
-		// 		)
-		// 	}
-		// 	this.calendarArray.push(newObj2)
-		// }
+
 
 		for (let i = fHour; i <= lHour; i++) {
 			const j = String(i)
 			const newObj2 = {}
-			// this.generatedHours.push(`${i < 10 ? 0 + j : j}:00`)
 			for (var day in this.columnArray) {
 				const h = this.columnArray[day].columnDef[2] + this.columnArray[day].columnDef[3]
-				// for (let h = cDay; h <= dOMonth; h++) {
 				Object.defineProperty(newObj2, `ar${h}`, {
 					value: `${i < 10 ? 0 + j : j}:00`,
 					writable: true,
@@ -111,6 +99,10 @@ export class CalendarGeneratorComponent implements OnInit {
 		this.lastDate.day = changes[1]
 		this.firstHour = this.timeStringToInt(changes[2])
 		this.lastHour = this.timeStringToInt(changes[3])
+		this.allowedDays = []
+		this.allowedDays = changes[4]
+		console.log('\n', this.allowedDays);
+
 
 
 		this.columnArray = []
@@ -134,30 +126,6 @@ export class CalendarGeneratorComponent implements OnInit {
 		// var minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
 		return hours
 	}
-	// columnGenerator(cDay, dOM) {
-	// 	for (let iterador = cDay; iterador <= dOM; iterador++) {
-	// 		const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-	// 		const dayOfWeekGetter = (new Date(this.currentlyYear, this.currentlyMonth, iterador)).getDay()
-	// 		const temporaryObj = {
-	// 			columnDef: `ar${iterador}`,
-	// 			header: days[dayOfWeekGetter],
-	// 			cell: function (column) {
-	// 				return `${column[`ar${iterador}`]}`
-	// 			}
-
-	// 		}
-	// 		this.columnArray.push(temporaryObj)
-	// 	}
-
-	// }
-
-
-
-	// cleanArray(days) {
-	//   const calendarFiltered = this.calendarArray.filter((day) => day.header === days)
-	//   // this.calendarArray.map((day) => day.header === days ? this.calendarArray.pop() : "QualquerCoisa")
-	//   this.calendarArray = calendarFiltered
-	// }
 
 
 
