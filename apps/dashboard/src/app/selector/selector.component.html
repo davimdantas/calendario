@@ -1,102 +1,86 @@
-<p>
-  selector works!
-</p>
+<mat-divider></mat-divider>
+<!-- <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Dias da semana
+      </mat-panel-title>
+      <mat-panel-description>
+        Escolha os dias disponíveis
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-<div>
-  Month
-  {{generatedMonth | json}}
-  <br>
-  <br>
+    <mat-form-field>
+      <input matInput [min]="firstDay" [max]="lastDay" [matDatepicker]="inicial" placeholder="Data inicial" disabled>
+      <mat-datepicker-toggle matSuffix [for]="inicial"></mat-datepicker-toggle>
+      <mat-datepicker #inicial disabled="false"></mat-datepicker>
+      <input matInput [min]="firstDay" [max]="lastDay" [matDatepicker]="final" placeholder="Data final" disabled>
+      <mat-datepicker-toggle matSuffix [for]="final"></mat-datepicker-toggle>
+      <mat-datepicker #final disabled="false"></mat-datepicker>
+    </mat-form-field>
 
-  <!-- <hr>
-  {{generatedHours| json}}
-  <hr>
-  <br>
-  <br>
-
-    Days
-    {{generatedDays| json}}
-    <br>
-    <br> -->
-  <p>
-
-    Collums
-    {{columns| json}}
-    <br>
-    <br>
-    novoarray
-    {{novoarray| json}}
-    <br>
-    <br>
-    teste
-    {{teste| json}}
-
-    <!-- {{generatedMonth[1]| json}} -->
-    <br>
-
-    <br>
-
-    <br>
-    <br>
+  </mat-expansion-panel>
 
 
-    <br>
-    <br>
-    Month Day
-    <!-- {{generatedMonth[0].monthDay | json}} -->
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion> -->
 
 
-  </p>
-  aaaaa
-  <!-- {{columns[0].schedule(generatedMonth[0])| json}} -->
-  <!-- {{novoarray[1].schedule3(teste[0])| json}}
-  {{novoarray[1].schedule3(teste[1])| json}}
-  {{novoarray[1].schedule3(teste[2])| json}}
-  {{novoarray[1].schedule3(teste[3])| json}}
-  {{novoarray[1].schedule3(teste[4])| json}}
-  {{novoarray[1].schedule3(teste[5])| json}}
-  {{novoarray[1].schedule3(teste[6])| json}}
-  {{novoarray[1].schedule3(teste[7])| json}}
-  {{novoarray[1].schedule3(teste[8])| json}}
-  {{novoarray[1].schedule3(teste[9])| json}}
-  {{novoarray[1].schedule3(teste[10])| json}}
-  {{novoarray[1].schedule3(teste[11])| json}}
-  {{novoarray[1].schedule3(teste[12])| json}} -->
+<div class="col-12 col-xl-9 px-md-0 pr-xl-4">
+  <div class="component-demo">
 
 
+    <p>Selecione o periodo disponível para o evento</p>
+
+    <ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="1" [dayTemplate]="t"
+      [minDate]="firstDay" [maxDate]="lastDay">
+    </ngb-datepicker>
+
+    <ng-template #t let-date let-focused="focused">
+      <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+
+      </span>
+    </ng-template>
+    <form class="teste">
+
+      <mat-form-field style="width:100px">
+        <input matInput type="time" placeholder="Hora inicial" value="07:00" style="width:100px" name="horaI"
+          [(ngModel)]="mudancas.horaI">
 
 
-</div>
+      </mat-form-field>
+      <mat-form-field style="width:100px">
+        <input matInput type="time" placeholder="Hora Final" value="18:00" style="width:100px" name="horaF" [(ngModel)]="mudancas.horaF">
+      </mat-form-field>
+      <!-- <mat-form-field style="width:100px">
+        <input matInput type="number" placeholder="Hora inicial" value="07" style="width:100px" name="horaI"
+          [(ngModel)]="mudancas.horaI">
 
 
+      </mat-form-field>
+      <mat-form-field style="width:100px">
+        <input matInput type="number" placeholder="Hora Final" value="18" style="width:100px" name="horaF" [(ngModel)]="mudancas.horaF">
+      </mat-form-field> -->
+      <!-- <input type="submit" value="Save"> -->
 
-<mat-table [dataSource]="dataSource">
-
-  <!-- <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef">
-    <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
-    <mat-cell *ngFor="let day of generatedMonth">{{day.monthDay}}</mat-cell>
-  </ng-container>
-
-
-  <ng-container *ngFor="let column of generatedMonth" [cdkColumnDef]="column.monthDay">
-    <mat-header-cell *cdkHeaderCellDef>{{ column.weekDay }}</mat-header-cell>
-    <mat-cell *matCellDef="let day">{{day.monthDay}}</mat-cell>
-  </ng-container> -->
-
-  <!-- <ng-container *ngFor="let column of generatedMonth" [cdkColumnDef]="column.monthDay">
-    <mat-header-cell *cdkHeaderCellDef>{{ column.weekDay }}</mat-header-cell>
-    <mat-cell *matCellDef="let day of teste"></mat-cell>
-  </ng-container> -->
-
-  <ng-container *ngFor="let column of novoarray" [cdkColumnDef]="column.columnDef">
-    <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
-    <mat-cell *matCellDef="let day">{{column.cell(day)}}</mat-cell>
-  </ng-container>
-
-
-
-
-
-  <mat-header-row *matHeaderRowDef="generatedDays"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: generatedDays;"></mat-row>
-</mat-table>
+      <button mat-raised-button (click)="updateDates()">Enviar mudanças</button>
+    </form>
+    <!-- 
+    <hr>
+    <pre>{{ getCurrentModel() }}</pre>
+    <pre>From: {{ fromDate | json }} </pre>
+    <pre>To: {{ toDate | json }} </pre>
+  </div> -->
+  </div>

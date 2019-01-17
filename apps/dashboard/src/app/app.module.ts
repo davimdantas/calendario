@@ -11,10 +11,16 @@ import { CustomersModule } from './customers/customers.module';
 import { SelectorComponent } from './selector/selector.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material';
+import { CalendarGeneratorComponent } from './calendar-generator/calendar-generator.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [AppComponent, SelectorComponent],
+  declarations: [AppComponent, SelectorComponent, CalendarGeneratorComponent],
   imports: [
     BrowserModule,
     NxModule.forRoot(),
@@ -25,9 +31,14 @@ import { MatTableModule } from '@angular/material';
     ProjectsModule,
     CustomersModule,
     CdkTableModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgbModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

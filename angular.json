@@ -83,7 +83,9 @@
               "apps/dashboard/tsconfig.app.json",
               "apps/dashboard/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -117,7 +119,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/dashboard-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -135,7 +139,9 @@
               "libs/material/tsconfig.lib.json",
               "libs/material/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -166,7 +172,9 @@
               "libs/core-data/tsconfig.lib.json",
               "libs/core-data/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -197,7 +205,9 @@
               "libs/ui-login/tsconfig.lib.json",
               "libs/ui-login/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -228,7 +238,9 @@
               "libs/ui-toolbar/tsconfig.lib.json",
               "libs/ui-toolbar/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {

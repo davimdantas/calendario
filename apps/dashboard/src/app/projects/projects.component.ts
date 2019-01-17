@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getLocaleDayNames } from '@angular/common';
-import { stringify } from '@angular/core/src/render3/util';
+
 
 @Component({
 	selector: 'app-projects',
