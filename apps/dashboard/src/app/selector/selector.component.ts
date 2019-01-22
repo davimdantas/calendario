@@ -103,7 +103,8 @@ export class SelectorComponent implements OnInit {
 		// console.log('\n Depois: ', this.fromDate, ' | ', this.toDate);
 		this.dateArray = []
 		if (this.toDate && this.fromDate) {
-			this.dateArray.push(this.fromDate.day, this.toDate.day)
+			console.log('\n fromDate', this.fromDate);
+			this.dateArray.push(this.fromDate, this.toDate)
 
 		}
 	}

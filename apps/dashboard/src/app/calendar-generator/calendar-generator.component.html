@@ -1,51 +1,7 @@
-<!-- <div>
-  Month
-  <br>
-
-  {{generatedMonth | json}}
-  <br>
-
-    Collums
-    <br>
-    {{columns| json}}
-    <br>
-    columnArray
-    <br>
-    {{columnArray| json}}
-    <br>
-    teste
-    {{teste| json}}
-    <br>
-    generatedDays
-    <br>
-    {{generatedDays| json}}
-    <br>
-
-
-  {{columnArray[1].schedule3(teste[0])| json}}
-  {{columnArray[1].schedule3(teste[12])| json}}
-
-
-
-
-</div> -->
-
-<!-- <br>
-columnArray
-<br>
-
-{{columnArray| json}}
-<br>
-calendarArray
-<br>
-{{calendarArray| json}}
-<br> -->
-
-
-
 <mat-table [dataSource]="dataSource">
   <ng-container *ngFor="let column of columnArray" [cdkColumnDef]="column.columnDef">
     <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
+
     <mat-cell *matCellDef="let day">{{column.cell(day)}}</mat-cell>
   </ng-container>
 
@@ -58,7 +14,7 @@ calendarArray
 
 <app-selector [firstDay]="firstDate" [lastDay]="lastDate" (clicked)="updateDays($event)"></app-selector>
 
-generatedDays
+<!-- generatedDays
 <br>
 {{generatedDays | json }}
 <br>
@@ -70,4 +26,4 @@ calendarArray
 <br>
 columnArray
 <br>
-{{columnArray | json }}
+{{columnArray | json }} -->
