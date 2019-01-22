@@ -42,8 +42,10 @@
 
 		<p>Selecione o periodo disponível para o evento</p>
 
-		<ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="1" [dayTemplate]="t"
-		 [minDate]="firstDay" [maxDate]="lastDay">
+		<!-- <ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="2" [dayTemplate]="t"
+		 [minDate]="firstDay" [maxDate]="lastDay"> -->
+		<ngb-datepicker #dp (select)="onDateSelection($event)" [firstDayOfWeek]="7" [displayMonths]="2" [dayTemplate]="t"
+		 [minDate]="firstDay">
 		</ngb-datepicker>
 
 		<ng-template #t let-date let-focused="focused">

@@ -9,14 +9,18 @@ import { map } from 'rxjs/operators';
 })
 export class CalendarGeneratorComponent implements OnInit {
 	dateGenerated = new Date();
+
 	currentlyDay = this.dateGenerated.getDate();
 	currentlyMonth = this.dateGenerated.getMonth();
 	months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 	formattedMonth = this.months[this.currentlyMonth]
 	currentlyYear = this.dateGenerated.getFullYear();
+	UltimoDia = new Date(this.currentlyYear, this.currentlyMonth, 0);
 	firstWDayOfMonth = (new Date(this.currentlyYear, this.currentlyMonth)).getDay();
-	daysOfMonth = 32 - new Date(this.currentlyYear, this.currentlyMonth, 32).getDate();
+	// daysOfMonth = 32 - new Date(this.currentlyYear, this.currentlyMonth, 32).getDate();
+	daysOfMonth = new Date(this.currentlyYear, this.currentlyMonth, 0).getDate();
+
 
 	firstDate = {
 		year: this.dateGenerated.getUTCFullYear(),
@@ -39,13 +43,36 @@ export class CalendarGeneratorComponent implements OnInit {
 
 	columnArray = []
 
+	testeArray = []
+
 
 	daysForTable = new BehaviorSubject(this.calendarArray)
 
 	dataSource: Observable<any[]>;
 	allowedDays = [0, 1, 2, 3, 4, 5, 6]
 
+	// gerarDias(hoje, ultimo) {
+	// 	for (let dia = hoje; dia < ultimo; )
+	// }
 
+
+	getDates(startDate, endDate) {
+		var dates = [],
+			currentDate = startDate,
+			addDays = function (days) {
+				var date = new Date(this.valueOf());
+				date.setDate(date.getDate() + days);
+				return date;
+			};
+		while (currentDate <= endDate) {
+			dates.push(currentDate);
+			currentDate = addDays.call(currentDate, 1);
+		}
+		return dates;
+	};
+
+	// Usage
+	var
 	calendarGenerator(fHour, lHour, cDay, dOMonth) {
 		const newObj = {}
 		for (let k = cDay; k <= dOMonth; k++) {
@@ -133,9 +160,16 @@ export class CalendarGeneratorComponent implements OnInit {
 
 	ngOnInit() {
 		this.calendarGenerator(this.firstHour, this.lastHour, this.currentlyDay, this.daysOfMonth)
+		console.log('\nDate generated', this.dateGenerated);
+		console.log('\Ultimo generated', this.daysOfMonth);
+
 		// this.columnGenerator(this.currentlyDay, this.daysOfMonth)
 		this.columnArray.map((day) => this.generatedDays.push(day.columnDef))
 		this.dataSource = this.daysForTable.pipe(map(v => Object.values(v)))
+		let testeee = this.getDates(new Date(this.currentlyYear, this.currentlyMonth, this.currentlyDay), new Date(2019, 1, 21));
+		testeee.forEach(function (date) {
+			console.log(date);
+		});
 
 	}
 
