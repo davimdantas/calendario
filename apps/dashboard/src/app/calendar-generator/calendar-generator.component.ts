@@ -69,8 +69,8 @@ export class CalendarGeneratorComponent implements OnInit {
 
 	getDates(startDate, endDate) {
 		while (startDate <= endDate) {
-			var startDate1 = startDate.setDate(startDate.getDate() + 1);
-			this.dates.push(new Date(startDate1));
+			this.dates.push(new Date(startDate));
+			startDate.setDate(startDate.getDate() + 1);
 		}
 		// for (var eachday in this.dates) {
 
@@ -145,7 +145,7 @@ export class CalendarGeneratorComponent implements OnInit {
 		this.columnArray = []
 		this.calendarArray = []
 		this.generatedDays = []
-		this.getDates(new Date(changes[0].year, changes[0].month, changes[0].day), new Date(changes[1].year, changes[1].month, changes[1].day));
+		this.getDates(new Date(changes[0].year, changes[0].month - 1, changes[0].day), new Date(changes[1].year, changes[1].month - 1, changes[1].day));
 		this.daysForTable = new BehaviorSubject(this.calendarArray)
 
 		this.calendarGenerator(this.firstHour, this.lastHour)
@@ -153,6 +153,7 @@ export class CalendarGeneratorComponent implements OnInit {
 		this.columnArray.map((day) => this.generatedDays.push(day.columnDef))
 
 		this.dataSource = this.daysForTable.pipe(map(v => Object.values(v)))
+		console.log('\n dates: ', changes);
 	}
 
 	timeStringToInt(time) {

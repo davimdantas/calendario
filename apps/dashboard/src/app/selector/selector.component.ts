@@ -127,7 +127,9 @@ export class SelectorComponent implements OnInit {
 
 	updateDates() {
 		this.gerarArrayDiasDasemana()
-		this.dateArray.push(this.mudancas.horaI, this.mudancas.horaF, this.arrayDiasDasemana)
+		this.dateArray[2] = this.mudancas.horaI
+		this.dateArray[3] = this.mudancas.horaF
+		this.dateArray[4] = this.arrayDiasDasemana
 		this.clicked.emit(this.dateArray)
 	}
 
